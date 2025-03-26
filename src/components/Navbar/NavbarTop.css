@@ -1,0 +1,35 @@
+.navbartop-wrapper {
+  display: flex;
+  width: 100% !important;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 2px solid #e0e0e0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #2C2C2C;
+  line-height: 2.4;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
+}
+
+
+.navbar-top-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 26px;
+  color: #495057;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-top-icons > * {
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-top-icons > *:hover {
+  background-color: #f1f3f5;
+  color: #212529;
+}

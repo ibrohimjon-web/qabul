@@ -1,0 +1,22 @@
+.app-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.routes {
+  margin-left: 30px;
+  width: 100%;
+  padding: 0 5px;
+}
+
+@media (max-width: 900px) {
+  .app-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .routes {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+

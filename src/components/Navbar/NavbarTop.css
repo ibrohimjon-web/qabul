@@ -33,3 +33,9 @@
   background-color: #f1f3f5;
   color: #212529;
 }
+
+@media (max-width:900px) {
+  .navbartop-wrapper {
+    display: none;
+  }
+}

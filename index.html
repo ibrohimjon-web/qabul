@@ -1,13 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="uz">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <meta name="description" content="Online qabul ro'yhatga yozilish - O'quv markazlariga qabul jarayonini raqamlashtirish tizimi" />
+    <meta name="keywords" content="qabul, online qabul, ro'yhatga yozilish, o'quv markaz, talaba qabuli, O'zbekiston" />
+    <meta name="author" content="Qabul.uz" />
+    <meta property="og:title" content="Qabul.uz - Online qabul tizimi" />
+    <meta property="og:description" content="O'quv markazlariga online tarzda ro'yhatdan o'tish tizimi" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qabul.uz" />
+    <meta property="og:image" content="https://qabul.uz/images/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <title>Qabul.uz - O'quv markazlariga online ro'yhatdan o'tish</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
   </body>
 </html>

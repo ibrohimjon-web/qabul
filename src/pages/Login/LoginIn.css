@@ -10,7 +10,7 @@
 
 .loginIn-wrapper {
   width: 440px;
-  height: 949px;
+  height: 849px;
   border-radius: 20px;
   padding: 50px;
   background-color: #fcfcfcff;
@@ -220,7 +220,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 52px;
+  margin-top: 32px;
 }
 
 .google-logo {

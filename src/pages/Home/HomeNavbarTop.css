@@ -49,7 +49,8 @@
   height: 44px;
 }
 
-.home-navbar-top-btnn {
+.home-navbar-top-btnn,
+.navLink {
   color: #287680ff;
   border: 1px solid #287680ff;
   background: none;
@@ -58,6 +59,16 @@
   cursor: pointer;
   width: 182px;
   height: 44px;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+}
+
+.navLinkk {
+  color: #287680ff;
+  text-decoration: none;
 }
 
 .home-navbar-top-btn-link {

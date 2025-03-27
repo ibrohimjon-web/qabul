@@ -1,6 +1,6 @@
 .navbartop-wrapper {
   display: flex;
-  width: 100% !important;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
@@ -11,8 +11,9 @@
   line-height: 2.4;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 30px;
+  padding: 0 20px; /* Added padding for better spacing */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
-
 
 .navbar-top-icons {
   display: flex;
@@ -26,7 +27,7 @@
 .navbar-top-icons > * {
   padding: 5px;
   border-radius: 50%;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-top-icons > *:hover {
@@ -34,7 +35,7 @@
   color: #212529;
 }
 
-@media (max-width:900px) {
+@media (max-width: 900px) {
   .navbartop-wrapper {
     display: none;
   }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FiHome } from "react-icons/fi";
 import { HiOutlineMegaphone } from "react-icons/hi2";
@@ -8,20 +8,41 @@ import { RiEditBoxLine, RiLoginCircleLine } from "react-icons/ri";
 import { TiDocumentText } from "react-icons/ti";
 import { PiBellRinging } from "react-icons/pi";
 import { IoIosSearch } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close navbar when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
   return (
     <>
-      <div className="navbar-phone">
+      {/* Mobile Navbar */}
+      <div className={`navbar-phone ${scrolled ? "scrolled" : ""}`}>
         <div className="navbar-phone-top">
           <div className="hamburger" onClick={toggleNavbar}>
             {isOpen ? (
@@ -33,28 +54,35 @@ const Navbar = () => {
           <NavLink to="/" className="logo-p">
             <img src={logo} alt="Logotim img" />
           </NavLink>
-          <NavLink>
+          <NavLink to="/notifications">
             <PiBellRinging className="navbar-phone-icon" />
           </NavLink>
         </div>
         <div className="navbar-phone-search">
-          <IoIosSearch />
+          <IoIosSearch size={30} />
           <input type="text" placeholder="Qidirish..." />
         </div>
       </div>
 
+      {/* Backdrop for mobile */}
       <div
         className={`backdrop ${isOpen ? "show" : ""}`}
-        onClick={() => setIsOpen(false)}
+        onClick={toggleNavbar}
       ></div>
 
-      <div className={`navbar ${isOpen ? "show" : "hidden"}`}>
+      {/* Desktop Navbar */}
+      <div
+        className={`navbar ${isOpen ? "show" : ""} ${
+          scrolled ? "scrolled" : ""
+        }`}
+      >
         <img src={logo} alt="Logotim img" className="logo" />
         <ul className="links">
           <li>
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "link active" : "link")}
+              end
             >
               <FiHome className="link-icon" /> Bosh sahifa
             </NavLink>
@@ -72,7 +100,7 @@ const Navbar = () => {
               to="/status"
               className={({ isActive }) => (isActive ? "link active" : "link")}
             >
-              <TiDocumentText className="link-icon" /> Ariza holatini ko’rish
+              <TiDocumentText className="link-icon" /> Ariza holatini ko'rish
             </NavLink>
           </li>
           <li>
@@ -99,9 +127,11 @@ const Navbar = () => {
               <LuHeadset className="link-icon" /> Aloqa
             </NavLink>
           </li>
-          <NavLink to="/login" className="link-login">
-            Kirish <RiLoginCircleLine className="link-icon" />
-          </NavLink>
+          <div className="login-container">
+            <NavLink to="/login" className="link-login">
+              Kirish <RiLoginCircleLine className="link-icon" />
+            </NavLink>
+          </div>
         </ul>
       </div>
     </>

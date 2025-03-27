@@ -9,7 +9,7 @@
 
 .loginUp-wrapper {
   width: 440px;
-  height: 586px;
+  height: 616px;
   border: 1px solid rgba(57, 57, 57, 0.25);
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 1);
@@ -110,7 +110,7 @@
   width: 100%;
   background-color: transparent;
   cursor: pointer;
-  border-bottom: 3px solid rgb(19, 27, 28);
+  border-bottom: 3px solid #D9D9D9;
 }
 
 .tab.active {

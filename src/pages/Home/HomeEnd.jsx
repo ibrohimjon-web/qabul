@@ -3,141 +3,146 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./HomeEnd.css";
 
 const HomeEnd = () => {
-  // Data for the accordion items
-  const faqs1 = [
+  // Consolidated FAQ data
+  const faqSections = [
     {
-      question:
-        "These are short, famous texts in English from classic sources?",
-      answer:
-        "Written English will both improve your vocabulary and understanding.",
+      items: [
+        {
+          question:
+            "These are short, famous texts in English from classic sources?",
+          answer:
+            "Written English will both improve your vocabulary and understanding.",
+        },
+        {
+          question: "Like the Bible or Shakespeare?",
+          answer:
+            "The texts below are designed to help you develop while giving you an instant evaluation of your progress.",
+        },
+        {
+          question:
+            "Some texts have word definitions and explanations to help you?",
+          answer:
+            "Of course, not all these texts were originally written in English. The Bible, for example, is a translation.",
+        },
+
+        /////////////////////////////////////
+
+        {
+          question:
+            "These are short, famous texts in English from classic sources?",
+          answer:
+            "Written English will both improve your vocabulary and understanding.",
+        },
+        {
+          question: "Like the Bible or Shakespeare?",
+          answer:
+            "The texts below are designed to help you develop while giving you an instant evaluation of your progress.",
+        },
+        {
+          question:
+            "Some texts have word definitions and explanations to help you?",
+          answer:
+            "Of course, not all these texts were originally written in English. The Bible, for example, is a translation.",
+        },
+      ],
     },
     {
-      question: "Like the Bible or Shakespeare?",
-      answer:
-        "The texts below are designed to help you develop while giving you an instant evaluation of your progress.",
-    },
-    {
-      question:
-        "Some texts have word definitions and explanations to help you?",
-      answer:
-        "Of course, not all these texts were originally written in English. The Bible, for example, is a translation.",
-    },
-    {
-      question: "These texts are written in an old style of English?",
-      answer:
-        "But they are all well known in English today, and many of them express beautiful thoughts.",
-    },
-    {
-      question:
-        "Try to understand them, because the English that we speak today is based on?",
-      answer:
-        "English texts for beginners to practice reading and comprehension.",
-    },
-    {
-      question:
-        "What our great, great, great, great grandparents spoke before!",
-      answer: "Online and for free. Practicing your comprehension.",
+      items: [
+        {
+          question: "These texts are written in an old style of English?",
+          answer:
+            "But they are all well known in English today, and many of them express beautiful thoughts.",
+        },
+        {
+          question:
+            "Try to understand them, because the English that we speak today is based on?",
+          answer:
+            "English texts for beginners to practice reading and comprehension.",
+        },
+        {
+          question:
+            "What our great, great, great, great grandparents spoke before!",
+          answer: "Online and for free. Practicing your comprehension.",
+        },
+
+        /////////////////////////////////////////////////
+
+        {
+          question: "These texts are written in an old style of English?",
+          answer:
+            "But they are all well known in English today, and many of them express beautiful thoughts.",
+        },
+        {
+          question:
+            "Try to understand them, because the English that we speak today is based on?",
+          answer:
+            "English texts for beginners to practice reading and comprehension.",
+        },
+        {
+          question:
+            "What our great, great, great, great grandparents spoke before!",
+          answer: "Online and for free. Practicing your comprehension.",
+        },
+      ],
     },
   ];
 
-  const faqs2 = [
-    {
-      question:
-        "These are short, famous texts in English from classic0 sources?",
-      answer:
-        "Written English will both improve your vocabulary and understanding.",
-    },
-    {
-      question: "Like the Bible or Shakespeare?",
-      answer:
-        "The texts below are designed to help you develop while giving you an instant evaluation of your progress.",
-    },
-    {
-      question:
-        "Some texts have word definitions and explanations to help you?",
-      answer:
-        "Of course, not all these texts were originally written in English. The Bible, for example, is a translation.",
-    },
-    {
-      question: "These texts are written in an old style of English?",
-      answer:
-        "But they are all well known in English today, and many of them express beautiful thoughts.",
-    },
-    {
-      question:
-        "Try to understand them, because the English that we speak today is based on?",
-      answer:
-        "English texts for beginners to practice reading and comprehension.",
-    },
-    {
-      question:
-        "What our great, great, great, great grandparents spoke before!",
-      answer: "Online and for free. Practicing your comprehension.",
-    },
-  ];
+  const [expandedItems, setExpandedItems] = useState({});
 
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
-  // Function to toggle the expansion of an accordion item
-  const toggleAccordion = (index) => {
-    setExpandedIndex(index === expandedIndex ? null : index);
+  const toggleAccordion = (sectionIndex, itemIndex) => {
+    const key = `${sectionIndex}-${itemIndex}`;
+    setExpandedItems((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   return (
-    <div className="accordion-container">
+    <section
+      className="accordion-container"
+      aria-label="Frequently Asked Questions"
+    >
       <h2 className="title">Ko'p so'raladigan savollar</h2>
       <div className="accordion-wrapper">
-        <div className="accordion">
-          {faqs1.map((item, index) => (
-            <div key={index} className="accordion-item">
-              <div
-                className={`accordion-header ${
-                  expandedIndex === index ? "expanded" : ""
-                }`}
-                onClick={() => toggleAccordion(index)}
-              >
-                <span>{item.question}</span>
-                <span className="toggle-icon">
-                  {expandedIndex === index ? (
-                    <FaChevronUp />
-                  ) : (
-                    <FaChevronDown />
-                  )}
-                </span>
-              </div>
-              {expandedIndex === index && (
-                <div className="accordion-content">{item.answer}</div>
-              )}
-            </div>
-          ))}
-        </div>
+        {faqSections.map((section, sectionIndex) => (
+          <div key={sectionIndex} className="accordion-section">
+            <div className="accordion">
+              {section.items.map((item, itemIndex) => {
+                const key = `${sectionIndex}-${itemIndex}`;
+                const isExpanded = expandedItems[key];
 
-        <div className="accordion">
-          {faqs2.map((item, index) => (
-            <div key={index} className="accordion-item">
-              <div
-                className={`accordion-header ${
-                  expandedIndex === index + 6 ? "expanded" : ""
-                }`}
-                onClick={() => toggleAccordion(index + 6)}
-              >
-                <span>{item.question}</span>
-                <span className="toggle-icon">
-                  {expandedIndex === index + 6 ? (
-                    <FaChevronUp />
-                  ) : (
-                    <FaChevronDown />
-                  )}
-                </span>
-              </div>
-              {expandedIndex === index + 6 && (
-                <div className="accordion-content">{item.answer}</div>
-              )}
+                return (
+                  <div key={key} className="accordion-item">
+                    <button
+                      className={`accordion-header ${
+                        isExpanded ? "expanded" : ""
+                      }`}
+                      onClick={() => toggleAccordion(sectionIndex, itemIndex)}
+                      aria-expanded={isExpanded}
+                      aria-controls={`content-${key}`}
+                    >
+                      <span>{item.question}</span>
+                      <span className="toggle-icon">
+                        {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                      </span>
+                    </button>
+                    {isExpanded && (
+                      <div
+                        id={`content-${key}`}
+                        className="accordion-content"
+                        role="region"
+                      >
+                        {item.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

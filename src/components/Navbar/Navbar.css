@@ -1,87 +1,131 @@
-/* Navbar.css */
+/* Base Navbar Styles */
 .navbar {
   background-color: #FCFCFC;
   width: 262px;
   padding: 20px 19px 20px 5px;
-  height: 95vh !important;
+  height: auto; /* O'zgargan */
+  min-height: 500px; /* Yangi qo'shilgan */
+  max-height: 90vh; /* Yangi qo'shilgan */
   border-radius: 20px;
   position: fixed;
-  top: 0;
+  top: 20px; /* Yangi qo'shilgan */
   left: 0;
   z-index: 1000;
   transform: translateX(-110%);
   transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* overflow-y: auto; O'chirildi */
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar.show {
   transform: translateX(0);
-  transition: transform 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hamburger {
   cursor: pointer;
   z-index: 1100;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
 }
 
 .logo {
   padding-left: 26px;
   margin-bottom: 20px;
+  max-width: 80%;
+  height: auto;
 }
-
 .links {
   display: flex;
   flex-direction: column;
   list-style: none;
   padding: 0 10px;
-  gap: 10px;
-  height: 90%;
+  width: 242px;
+  gap: 8px;
+  flex-grow: 1; /* Yangi qo'shilgan */
 }
 
+
 .links li a {
-  padding: 9px 5px 9px 14px;
-  width: 100%;
+  padding: 12px 5px 12px 14px;
+  width: 97%;
   display: flex;
   font-size: 16px;
   align-items: center;
   text-decoration: none;
   color: #686868;
   border-radius: 10px;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .links li a:hover,
 .links li a.active {
   background-color: #2c838f;
   color: white;
+  transform: translateX(5px);
 }
 
 .link-icon {
   margin-right: 10px;
   width: 22px;
   height: 22px;
+  transition: transform 0.2s ease;
+}
+
+.links li a:hover .link-icon,
+.links li a.active .link-icon {
+  transform: scale(1.1);
+}
+
+.login-container {
+  margin-top: auto; /* Bu "Kirish"ni pastga joylashtiradi */
 }
 
 .link-login {
-  padding: 9px 5px 9px 14px;
-  margin-top: auto;
-  width: 100%;
+  padding: 12px 5px;
+  width: 90%;
   display: flex;
   border-radius: 80px;
   gap: 15px;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   background-color: #2c838f;
   color: white;
   text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 20px; /* Yangi qo'shilgan */
 }
 
+.link-login:hover {
+  background-color: #236a74;
+  transform: scale(1.02);
+}
+
+/* Mobile Navbar Styles */
 .navbar-phone {
   width: 100%;
   display: none;
   flex-direction: column;
   padding: 10px;
   background-color: #FCFCFC;
-  border-radius: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-phone.scrolled {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(252, 252, 252, 0.95);
 }
 
 .navbar-phone-top {
@@ -94,12 +138,23 @@
 
 .logo-p img {
   height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.logo-p img:hover {
+  transform: scale(1.05);
 }
 
 .navbar-phone-icon {
   cursor: pointer;
   font-size: 30px;
   color: #141B34;
+  transition: all 0.2s ease;
+}
+
+.navbar-phone-icon:hover {
+  color: #2c838f;
+  transform: scale(1.1);
 }
 
 .navbar-phone-search {
@@ -109,44 +164,52 @@
   background-color: #F5F5F5;
   border-radius: 10px;
   gap: 10px;
+  margin-top: 5px;
 }
 
 .navbar-phone-search input {
   flex: 1;
-  background-color: #F5F5F5;
+  background-color: transparent;
   padding: 8px;
   border: none;
   border-radius: 5px;
   outline: none;
+  font-size: 16px;
 }
 
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 900;
+}
+
+.backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Styles */
 @media (max-width: 900px) {
-  .navbar-phone{
+  .navbar-phone {
     display: flex;
   }
-  .logo {
-    display: none;
-  }
+  
   .navbar {
-    padding-top: 50px;
-    border-radius: 0;
-  }
-  .backdrop {
-    position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    padding-top: 50px;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    z-index: 900;
-  }
-
-  .backdrop.show {
-    opacity: 1;
-    visibility: visible;
+    min-height: 95vh;
+    max-height: 95vh;
+    border-radius: 0;
+    width: 280px;
   }
 }
 
@@ -157,7 +220,30 @@
 
   .navbar {
     transform: translateX(0);
-    position: static;
-    height: auto;
+    position: sticky;
+    height: 100vh;
   }
+  
+  .navbar-phone {
+    display: none;
+  }
+}
+
+/* Scrollbar Styles */
+.navbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.navbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.navbar::-webkit-scrollbar-thumb {
+  background: #2c838f;
+  border-radius: 10px;
+}
+
+.navbar::-webkit-scrollbar-thumb:hover {
+  background: #236a74;
 }

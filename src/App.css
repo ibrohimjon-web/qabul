@@ -6,7 +6,7 @@
 }
 
 .routes {
-  margin-left: 30px;
+  overflow: hidden;
   width: 100%;
   padding: 0 5px;
 }

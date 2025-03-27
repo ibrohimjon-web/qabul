@@ -1,4 +1,5 @@
 import "./HomeNavbarTop.css";
+import { NavLink } from "react-router-dom";
 
 const HomeNavbarTop = () => {
   return (
@@ -15,14 +16,14 @@ const HomeNavbarTop = () => {
           </p>
           <div className="home-navbar-top-btn-wrapper">
             <button className="home-navbar-top-btn">
-              <a href="/" className="home-navbar-top-btn-link">
+              <NavLink className="navLink" to={"/submit"}>
                 Hujjat topshirish
-              </a>
+              </NavLink>
             </button>
             <button className="home-navbar-top-btnn">
-              <a href="/" className="home-navbar-top-btn-link">
+              <NavLink className="navLinkk" to={"/status"}>
                 Ariza holatini Ko‘rish
-              </a>
+              </NavLink>
             </button>
           </div>
         </div>

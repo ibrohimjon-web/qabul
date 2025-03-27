@@ -1,5 +1,5 @@
 // HomeCard.jsx
-import "./Homecard.css";
+import "./HomeCard.css";
 
 const HomeCard = () => {
   return (

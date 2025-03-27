@@ -1,26 +1,33 @@
 import { NavLink } from "react-router-dom";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
   return (
-    <div className="login">
-      <h2 className="login-h2">Xush kelibsiz !</h2>
-      <p className="login-p">Davom etish uchun ma’lumotlaringizni kiriting!</p>
-      <div className="login-links">
-        <NavLink to={"/login/in"}
-          className={({ isActive }) =>
-            isActive ? "loginlink active" : "loginlink"
-          }
-        >
-          Kirish
-        </NavLink>
-        <NavLink to={"/login/up"}
-          className={({ isActive }) =>
-            isActive ? "loginlink active" : "loginlink"
-          }
-        >
-          Ro&apos;yxatdan o&apos;tish
-        </NavLink>
+    <div className="login-overlay">
+      <div className="login-containerr">
+        <h2 className="login-title">Xush kelibsiz!</h2>
+        <p className="login-subtitle">
+          Davom etish uchun ma'lumotlaringizni kiriting!
+        </p>
+
+        <div className="login-tabs">
+          <NavLink
+            to="/login/in"
+            className={({ isActive }) =>
+              `login-tab ${isActive ? "active" : ""}`
+            }
+          >
+            Kirish
+          </NavLink>
+          <NavLink
+            to="/login/up"
+            className={({ isActive }) =>
+              `login-tab ${isActive ? "active" : ""}`
+            }
+          >
+            Ro'yxatdan o'tish
+          </NavLink>
+        </div>
       </div>
     </div>
   );

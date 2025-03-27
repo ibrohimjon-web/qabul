@@ -89,13 +89,12 @@ const HomeEnd = () => {
 
   const [expandedItems, setExpandedItems] = useState({});
 
-  const toggleAccordion = (sectionIndex, itemIndex) => {
-    const key = `${sectionIndex}-${itemIndex}`;
-    setExpandedItems((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
+ const [activeItem, setActiveItem] = useState(null);
+
+ const toggleAccordion = (sectionIndex, itemIndex) => {
+   const key = `${sectionIndex}-${itemIndex}`;
+   setActiveItem(activeItem === key ? null : key);
+ };
 
   return (
     <section
@@ -109,7 +108,7 @@ const HomeEnd = () => {
             <div className="accordion">
               {section.items.map((item, itemIndex) => {
                 const key = `${sectionIndex}-${itemIndex}`;
-                const isExpanded = expandedItems[key];
+                const isExpanded = activeItem === key;
 
                 return (
                   <div key={key} className="accordion-item">

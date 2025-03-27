@@ -1,6 +1,8 @@
 .app-wrapper {
   display: flex;
   width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .routes {
@@ -19,4 +21,3 @@
     width: 100%;
   }
 }
-

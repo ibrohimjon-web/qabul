@@ -15,6 +15,12 @@ const NavbarTop = () => {
         return "Ariza holatini ko'rish";
       case "/submit":
         return "Hujjat topshirish";
+      case "/faq":
+        return "Ko'p uchraydigan savollar va javoblar";
+      case "/news":
+        return "Yangiliklar";
+      case "/contact":
+        return "Bizbilan Aloqa";
       default:
         return "👋Salom! Hurmatli foydalanuvchi";
     }
